@@ -83,8 +83,9 @@ func (e envvars) toSlice() []string {
 // TODO: Set CUDA_VISIBLE_DEVICES to include only the devices for this resource type.
 func (d *Daemon) EnvVars() envvars {
 	return map[string]string{
-		"CUDA_MPS_PIPE_DIRECTORY": d.PipeDir(),
-		"CUDA_MPS_LOG_DIRECTORY":  d.LogDir(),
+		"CUDA_MPS_PIPE_DIRECTORY":           d.PipeDir(),
+		"CUDA_MPS_LOG_DIRECTORY":            d.LogDir(),
+		"CUDA_MPS_ACTIVE_THREAD_PERCENTAGE": d.activeThreadPercentage(),
 	}
 }
 
@@ -274,6 +275,11 @@ func (m *Daemon) activeThreadPercentage() string {
 	if len(m.Devices()) == 0 {
 		return ""
 	}
+
+	if pct := os.Getenv("CUDA_MPS_ACTIVE_THREAD_PERCENTAGE"); pct != "" {
+		return pct
+	}
+
 	replicasPerDevice := len(m.Devices()) / len(m.Devices().GetUUIDs())
 
 	return fmt.Sprintf("%d", 100/replicasPerDevice)
