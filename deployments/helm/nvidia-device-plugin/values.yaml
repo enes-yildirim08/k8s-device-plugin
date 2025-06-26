@@ -145,6 +145,11 @@ nfd:
           - vendor
 
 mps:
+  daemon:
+    # activeThreadPercentage is the percentage of active threads to use for MPS.
+    # This is set to 0 by default (which means 100/replicas), but can be overridden by setting the
+    # CUDA_MPS_ACTIVE_THREAD_PERCENTAGE environment variable in the pod spec.
+    activeThreadPercentage: "0"
   # root specifies the location where files and folders for managing MPS will
   # be created. This includes a daemon-specific /dev/shm and pipe and log
   # directories.

@@ -171,6 +171,10 @@ spec:
             value: all
           - name: NVIDIA_DRIVER_CAPABILITIES
             value: compute,utility
+        {{- if ne .Values.mps.daemon.activeThreadPercentage "0" }}
+          - name: CUDA_MPS_ACTIVE_THREAD_PERCENTAGE
+            value: {{ .Values.mps.daemon.activeThreadPercentage }}
+        {{- end }}
           securityContext:
             privileged: true
           volumeMounts:
