@@ -46,7 +46,7 @@ allowDefaultNamespace: false
 
 imagePullSecrets: []
 image:
-  repository: nvcr.io/nvidia/k8s-device-plugin
+  repository: ghcr.io/enes-yildirim08/k8s-device-plugin
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""

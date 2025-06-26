@@ -101,7 +101,7 @@ fi
 release=$1
 shift 1
 
-container_image=nvcr.io/nvidia/k8s-device-plugin:$release
+container_image=ghcr.io/enes-yildirim08/k8s-device-plugin:$release
 
 #
 # Check/parse release number
@@ -152,13 +152,13 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-# Create a release issue.
-echo "Creating release tracking issue"
-cat RELEASE.md | sed "s/{{ .VERSION }}/$release/g" | \
-    gh issue create -F - \
-        -R NVIDIA/cloud-native-team \
-        --title "Release k8s-device-plugin $release" \
-        --label release
+# # Create a release issue.
+# echo "Creating release tracking issue"
+# cat RELEASE.md | sed "s/{{ .VERSION }}/$release/g" | \
+#     gh issue create -F - \
+#         -R NVIDIA/cloud-native-team \
+#         --title "Release k8s-device-plugin $release" \
+#         --label release
 
 
 echo "Creating a version bump branch: bump-release-${release}"

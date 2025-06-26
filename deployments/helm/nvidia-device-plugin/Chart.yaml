@@ -2,10 +2,10 @@ apiVersion: v2
 name: nvidia-device-plugin
 type: application
 description: A Helm chart for the nvidia-device-plugin on Kubernetes
-version: "0.17.1"
-appVersion: "0.17.1"
+version: "0.17.3-custom"
+appVersion: "0.17.3-custom"
 kubeVersion: ">= 1.10.0-0"
-home: https://github.com/NVIDIA/k8s-device-plugin
+home: https://github.com/enes-yildirim08/k8s-device-plugin
 
 dependencies:
   - name: node-feature-discovery
