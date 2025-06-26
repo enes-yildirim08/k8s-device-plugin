@@ -1,0 +1,30 @@
+---
+- name: Check whether Stern is already there
+  stat:
+    path: /usr/local/bin/stern
+  register: stern_bin
+
+- name: Retrieve Stern binary archive
+  unarchive:
+    src: https://github.com/stern/stern/releases/download/v{{ stern.version }}/stern_{{ stern.version }}_linux_{{ arch }}.tar.gz
+    dest: /usr/bin
+    remote_src: yes
+  when: stern_bin.stat.islnk is not defined
+
+- name: Get the username
+  shell: echo ${USER}
+  register: actual_user
+  become: false
+
+- name: Set the username
+  set_fact:
+    the_user: "{{ actual_user.stdout }}"
+
+- name: Set the home path
+  set_fact:
+    the_home: "{{ '/root/' if the_user == 'root' else '/home/' + the_user }}"
+
+- name: Add stern auto-completion
+  lineinfile:
+    dest: "{{ the_home }}/.bashrc"
+    line: "source <(stern --completion=bash)"

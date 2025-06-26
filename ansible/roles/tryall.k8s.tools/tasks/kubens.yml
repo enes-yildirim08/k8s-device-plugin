@@ -1,0 +1,16 @@
+---
+- name: Check whether kubens is already there
+  stat:
+    path: /usr/local/bin/kubens
+  register: kubens_bin
+
+- name: Set kubens architecture
+  set_fact:
+    kubens_arch: "{{ 'x86_64' if arch == 'amd64' else 'arm64' }}"
+
+- name: Retrieve kubens binary archive
+  unarchive:
+    src: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens.version }}/kubens_v{{ kubens.version }}_linux_{{ kubens_arch }}.tar.gz"
+    dest: /usr/local/bin
+    remote_src: yes
+  when: kubens_bin.stat.islnk is not defined

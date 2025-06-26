@@ -1,0 +1,23 @@
+---
+- name: Add kubectl auto-completion
+  lineinfile:
+    dest: "{{ the_home }}/.bashrc"
+    line: "source <(kubectl completion bash)"
+  
+- name: Add kubectl auto-completion for k alias too
+  lineinfile:
+    dest: "{{ the_home }}/.bashrc"
+    line: "source <(kubectl completion bash | sed 's/kubectl/k/g')"
+
+- name: Add k alias to kubectl 
+  lineinfile:
+    dest: "{{ the_home }}/.bashrc"
+    line: "alias k=kubectl"
+
+- name: Add LC_ALL and LANG
+  lineinfile:
+    dest: "/etc/environment"
+    line: "{{ item.key }}={{ item.value }}"
+  with_items:
+    - { key: 'LANG', value: "en_US.utf-8" }
+    - { key: 'LC_ALL', value: "en_US.utf-8" }
