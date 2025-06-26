@@ -32,7 +32,7 @@ Example:
   - from a local path:
 	$this /path/to/nvidia-device-plugin-{{ VERSION }}.tgz
   - from a URL:
-    $this https://github.com/NVIDIA/k8s-device-plugin/archive/refs/tags/nvidia-device-plugin-{{ VERSION }}.tgz
+    $this https://github.com/enes-yildirim08/k8s-device-plugin/archive/refs/tags/nvidia-device-plugin-{{ VERSION }}.tgz
 
 EOF
 }
@@ -100,7 +100,7 @@ else
 	asset_local=$asset_path
 fi
 
-GH_REPO_PULL_URL="https://github.com/NVIDIA/k8s-device-plugin.git"
+GH_REPO_PULL_URL="https://github.com/enes-yildirim08/k8s-device-plugin.git"
 git clone --depth=1 --branch=gh-pages ${GH_REPO_PULL_URL} ${HELM_REPO_PATH}
 mkdir -p ${HELM_REPO_PATH}/stable
 
@@ -120,7 +120,7 @@ else
 fi
 
 echo "Updating helm index"
-helm repo index $HELM_REPO_PATH/stable --merge $HELM_REPO_PATH/stable/index.yaml --url https://nvidia.github.io/k8s-device-plugin/stable
+helm repo index $HELM_REPO_PATH/stable --merge $HELM_REPO_PATH/stable/index.yaml --url https://enes-yildirim08.github.io/k8s-device-plugin/stable
 cp -f $HELM_REPO_PATH/stable/index.yaml $HELM_REPO_PATH/index.yaml
 
 changes=$( git -C $HELM_REPO_PATH status --short )

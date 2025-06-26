@@ -57,7 +57,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Fetch the latest tags from the remote
-remote=$( git remote -v | grep -E "NVIDIA/k8s-device-plugin(\.git)?\s" | grep -oE "^[a-z]+" | sort -u )
+remote=$( git remote -v | grep -E "enes-yildirim08/k8s-device-plugin(\.git)?\s" | grep -oE "^[a-z]+" | sort -u )
 git fetch ${remote} --tags
 
 # if REFERENCE is not set, get the latest tag

@@ -23,7 +23,7 @@ if [[ ${VERSION} == v*-rc.* ]]; then
     PRERELEASE_FLAG="--prerelease"
 fi
 
-REPOSITORY=NVIDIA/k8s-device-plugin
+REPOSITORY=enes-yildirim08/k8s-device-plugin
 
 echo "Creating draft release"
 ./hack/generate-changelog.sh --version ${VERSION} --since ${REFERENCE} | \

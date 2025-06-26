@@ -15,9 +15,8 @@
 DRIVER_NAME := k8s-device-plugin
 MODULE := github.com/NVIDIA/$(DRIVER_NAME)
 
-REGISTRY ?= nvcr.io/nvidia
-
-VERSION ?= v0.17.1
+REGISTRY ?= ghcr.io/enes-yildirim08
+VERSION ?= v0.17.3-custom
 
 # vVERSION represents the version with a guaranteed v-prefix
 vVERSION := v$(VERSION:v%=%)
