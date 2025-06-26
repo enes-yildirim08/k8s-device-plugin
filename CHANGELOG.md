@@ -1,5 +1,34 @@
 ## Changelog
 
+### Version v0.17.3-custom
+- Normalize all line endings to LF
+- Add Vagrant configuration and Ansible role for Kubernetes tools setup
+- Add .vagrant to .gitignore to exclude Vagrant files from version control
+- Update workflow to use ubuntu-latest for build environment
+- Update repository references and version for nvidia-device-plugin
+- Update image name in GitHub Actions workflow to use the correct repository
+- Add active thread percentage configuration for MPS daemon
+- pass a single context throughout the device-plugin method call stack (#1284)
+- remove internal logger in favour of klog (#1277)
+- Remove FAIL_ON_INIT_ERROR from static examples
+- [gpu-feature-discovery] detect blackwell architecture
+- migrate to golangci-lint v2 (#1227)
+- Updated .release:staging to stage device-plugin images in nvstaging
+- use MiB instead of MB for gpu-memory
+- Update changelog fo v0.17.1 release
+- Ignore XID error 109
+- Update README.md adjust set docker runtime default
+- Remove nvidia.com/gpu.imex-domain label
+- Fix containerd runc config error when creating a kind cluster
+- Use stable nividia-container-toolkit repo when creating a kind cluster
+- Switch to context package in go stdlib
+- Raise a warning instead of an error if GPU mode labeler fails
+- Add ada-lovelace architecture label for compute capability 8.9
+- Ensure FAIL_ON_INIT_ERROR boolean env is quoted
+- Honor fail-on-init-error when no resources are found
+- enable hostPID in the mps-control-daemon pod (#1045)
+- Update NV-GHA IP Ranges
+
 ### Version v0.17.1
 - Ensure that generated CDI specs do not contain `enable-cuda-compat` hooks
 - Remove nvidia.com/gpu.imex-domain label
